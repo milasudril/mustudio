@@ -1,0 +1,16 @@
+config_set
+	[
+	components
+		[
+		Wand
+			[
+			herbarium
+				[
+				name[mustudio]
+				authors[Torbjörn^ Rathsman]
+				]
+			paths
+				[sources[.]]
+			]
+		]
+	]
