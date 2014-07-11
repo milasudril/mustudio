@@ -9,6 +9,7 @@ target
 #endif
 
 #include "midi_input_exported.h"
+#include "midi_event.h"
 #include "client.h"
 #include <jack/midiport.h>
 #include <jack/jack.h>

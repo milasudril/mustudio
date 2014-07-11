@@ -6,13 +6,14 @@ target[name[midi_input_exported.h]type[include]]
 #ifndef MUSTUDIO_MIDIINPUTEXPORTED_H
 #define MUSTUDIO_MIDIINPUTEXPORTED_H
 
-#include "midi_event.h"
+#include <cstddef>
 
 namespace MuStudio
 	{
 	class Client;
 	namespace MIDI
 		{
+		class Event;
 		class InputExported
 			{
 			public:

@@ -9,6 +9,7 @@ target
 #endif
 
 #include "midi_output_exported.h"
+#include "midi_event.h"
 #include "client.h"
 #include <jack/midiport.h>
 #include <jack/jack.h>
@@ -36,11 +37,11 @@ void MuStudio::MIDI::OutputExported::messageWritePrepare(size_t n_frames)
 	jack_midi_clear_buffer(buffer);
 	}
 	
-void MuStudio::MIDI::OutputExported::messageWrite(Message msg)
+void MuStudio::MIDI::OutputExported::messageWrite(const Event& e)
 	{
 	jack_midi_data_t* outbuff = jack_midi_event_reserve( buffer, 0, 3);
-	outbuff[0]=msg.byte_0;
-	outbuff[1]=msg.byte_1;
-	outbuff[2]=msg.byte_2;
+	outbuff[0]=e.data.byte_0;
+	outbuff[1]=e.data.byte_1;
+	outbuff[2]=e.data.byte_2;
 	}
 

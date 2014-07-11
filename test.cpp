@@ -6,6 +6,7 @@ target[type[application]name[mustudio-test]platform[;GNU/Linux]]
 #include "audio_input_exported.h"
 #include "midi_input_exported.h"
 #include "audio_output_exported.h"
+#include "midi_event.h"
 
 #include <unistd.h>
 #include <cstdio>

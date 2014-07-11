@@ -6,20 +6,21 @@ target[name[midi_output_exported.h]type[include]]
 #ifndef MUSTUDIO_MIDIOUTPUTEXPORTED_H
 #define MUSTUDIO_MIDIOUTPUTEXPORTED_H
 
-#include "midi_event.h"
+#include <cstddef>
 
 namespace MuStudio
 	{
 	class Client;
 	namespace MIDI
 		{
+		class Event;
 		class OutputExported
 			{
 			public:
 				OutputExported(Client& client,const char* name);
 				~OutputExported();
 				
-				void messageWrite(Message msg);
+				void messageWrite(const Event& event);
 				
 				void messageWritePrepare(size_t n_frames);
 				
