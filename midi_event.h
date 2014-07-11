@@ -1,5 +1,5 @@
 #ifdef __WAND__
-target[name[midi.h] type[include]]
+target[name[midi_event.h] type[include]]
 #endif
 
 #ifndef MUSTUDIO_MIDI_H
