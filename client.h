@@ -10,9 +10,25 @@ target[name[client.h]type[include]]
 
 namespace MuStudio
 	{
+	namespace MIDI
+		{
+		class InputExported;
+		class OutputExported;
+		}
+
+	namespace Audio
+		{
+		class InputExported;
+		class OutputExported;
+		}
+		
 	class Client
 		{
-		friend class Port;
+		friend class Audio::InputExported;
+		friend class Audio::OutputExported;
+		friend class MIDI::OutputExported;
+		friend class MIDI::InputExported;
+		
 		public:
 			static void setErrorHandler(void(*error_handler)(const char *));
 			
