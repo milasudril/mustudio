@@ -3,8 +3,9 @@ target[type[application]name[mustudio-test]platform[;GNU/Linux]]
 #endif
 
 #include "client.h"
-#include "port_audio.h"
-#include "port_midi.h"
+#include "audio_input_exported.h"
+#include "midi_input_exported.h"
+#include "audio_output_exported.h"
 
 #include <unistd.h>
 #include <cstdio>
@@ -16,26 +17,27 @@ class MuStudioTest:public Client
 	{
 	public:
 		MuStudioTest():Client("MuStudioTest")
-			,in_L(*this,"In/L",Port::PORT_IS_INPUT)
-			,in_R(*this,"In/R",Port::PORT_IS_INPUT)
-			,notes(*this,"MIDI IN",Port::PORT_IS_INPUT)
-			,out_L(*this,"Out/L",Port::PORT_IS_OUTPUT)
-			,out_R(*this,"Out/R",Port::PORT_IS_OUTPUT)
+			,in_L(*this,"In/L")
+			,in_R(*this,"In/R")
+			,notes(*this,"MIDI IN")
+			,out_L(*this,"Out/L")
+			,out_R(*this,"Out/R")
 			{
 			activate();
 			}
 		
 		int onProcess(size_t n_frames)
 			{
-			PortAudio::sample_t* in_L_buff=in_L.bufferGet(n_frames);
-			PortAudio::sample_t* in_R_buff=in_R.bufferGet(n_frames);
-			PortAudio::sample_t* out_L_buff=out_L.bufferGet(n_frames);
-			PortAudio::sample_t* out_R_buff=out_R.bufferGet(n_frames);
+			auto* in_L_buff=in_L.bufferGet(n_frames);
+			auto* in_R_buff=in_R.bufferGet(n_frames);
 			
-			memcpy(out_L_buff,in_L_buff,sizeof(PortAudio::sample_t)*n_frames);
-			memcpy(out_R_buff,in_R_buff,sizeof(PortAudio::sample_t)*n_frames);
+			auto* out_L_buff=out_L.bufferGet(n_frames);
+			auto* out_R_buff=out_R.bufferGet(n_frames);
 			
-			PortMIDI::Event event;
+			memcpy(out_L_buff,in_L_buff,sizeof(Audio::sample_t)*n_frames);
+			memcpy(out_R_buff,in_R_buff,sizeof(Audio::sample_t)*n_frames);
+			
+			MIDI::Event event;
 			bool has_events=notes.eventFirstGet(event,n_frames);
 			while(has_events)
 				{
@@ -52,12 +54,12 @@ class MuStudioTest:public Client
 			}
 		
 	private:
-		PortAudio in_L;
-		PortAudio in_R;
-		PortMIDI notes;
+		Audio::InputExported in_L;
+		Audio::InputExported in_R;
+		MIDI::InputExported notes;
 		
-		PortAudio out_L;
-		PortAudio out_R;
+		Audio::OutputExported out_L;
+		Audio::OutputExported out_R;
 	};
 	
 void errlog(const char* message)
