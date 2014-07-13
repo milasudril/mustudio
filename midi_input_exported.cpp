@@ -41,10 +41,10 @@ bool MuStudio::MIDI::InputExported::eventFirstGet(Event& event,size_t n_frames)
 	jack_midi_event_t e;
 	jack_midi_event_get(&e,buffer,event_index);
 	event.time=e.time;
-	event.data.byte_0=e.buffer[0];
-	event.data.byte_1=e.buffer[1];
-	event.data.byte_2=e.buffer[2];
-	event.data.padding=0;
+	event.type=0;
+	event.data.bytes[0]=e.buffer[0];
+	event.data.bytes[1]=e.buffer[1];
+	event.data.bytes[2]=e.buffer[2];
 	return 1;
 	}
 
@@ -56,10 +56,10 @@ bool MuStudio::MIDI::InputExported::eventNextGet(Event& event)
 		{
 		jack_midi_event_get(&e,buffer,event_index);
 		event.time=e.time;
-		event.data.byte_0=e.buffer[0];
-		event.data.byte_1=e.buffer[1];
-		event.data.byte_2=e.buffer[2];
-		event.data.padding=0;
+		event.type=0;
+		event.data.bytes[0]=e.buffer[0];
+		event.data.bytes[1]=e.buffer[1];
+		event.data.bytes[2]=e.buffer[2];
 		return 1;
 		}
 	return 0;

@@ -39,9 +39,12 @@ void MuStudio::MIDI::OutputExported::messageWritePrepare(size_t n_frames)
 	
 void MuStudio::MIDI::OutputExported::messageWrite(const Event& e)
 	{
-	jack_midi_data_t* outbuff = jack_midi_event_reserve( buffer, 0, 3);
-	outbuff[0]=e.data.byte_0;
-	outbuff[1]=e.data.byte_1;
-	outbuff[2]=e.data.byte_2;
+	if(e.type==0)
+		{
+		jack_midi_data_t* outbuff = jack_midi_event_reserve( buffer, 0, 3);
+		outbuff[0]=e.data.bytes[0];
+		outbuff[1]=e.data.bytes[1];
+		outbuff[2]=e.data.bytes[2];
+		}
 	}
 

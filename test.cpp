@@ -42,7 +42,7 @@ class MuStudioTest:public Client
 			bool has_events=notes.eventFirstGet(event,n_frames);
 			while(has_events)
 				{
-				printf("%x %x %x\n",event.data.byte_0,event.data.byte_1,event.data.byte_2);
+				printf("%x %x %x\n",event.data.bytes[0],event.data.bytes[1],event.data.bytes[2]);
 				has_events=notes.eventNextGet(event);
 				}
 			

@@ -1,0 +1,47 @@
+#ifdef __WAND__
+target[name[midi_sequence.h] type[include]]
+dependency[midi_sequence.o]
+#endif
+
+#ifndef MUSTUDIO_MIDISEQUENCE_H
+#define MUSTUDIO_MIDISEQUENCE_H
+
+#include <herbs/array/array.h>
+
+namespace Herbs
+	{
+	class StreamIn;
+	}
+
+namespace MuStudio
+	{
+	namespace MIDI
+		{
+		class Event;
+		class Sequence
+			{
+			public:
+				Sequence(Herbs::StreamIn& source);
+				
+				Herbs::Array<Event>* tracksBegin()
+					{return tracks.begin();}
+				const Herbs::Array<Event>* tracksBegin() const
+					{return tracks.begin();}
+				Herbs::Array<Event>* tracksEnd()
+					{return tracks.end();}
+				const Herbs::Array<Event>* tracksEnd() const 
+					{return tracks.end();}
+					
+				size_t timeDivisionGet() const
+					{return time_division;}
+				
+				Sequence& tracksMerge();
+				
+			private:
+				Herbs::Array<Herbs::Array<Event> > tracks;
+				size_t time_division;
+			};
+		}
+	}
+
+#endif
