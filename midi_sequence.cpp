@@ -9,7 +9,9 @@ target[name[midi_sequence.o] type[object]]
 #include "midi_chunk_reader.h"
 #include <herbs/stringbase/stringbase.h>
 
-MuStudio::MIDI::Sequence::Sequence(Herbs::StreamIn& source)
+MuStudio::MIDI::Sequence::Sequence(){}
+
+void MuStudio::MIDI::Sequence::load(Herbs::StreamIn& source)
 	{
 	MuStudio::MIDI::FileHeader header;
 	MuStudio::MIDI::ChunkReader chunk_reader(source,header);

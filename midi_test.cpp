@@ -14,7 +14,7 @@ int main()
 	size_t time_div=pattern.timeDivisionGet();
 	printf("Time div is %lu\n",time_div);
 	
-	pattern.tracksMerge();
+//	pattern.tracksMerge();
 	
 	auto track=pattern.tracksBegin();
 	while(track!=pattern.tracksEnd())
@@ -22,7 +22,7 @@ int main()
 		auto event=track->begin();
 		while(event!=track->end())
 			{
-			printf("%.15g ",double(event->time)/double(time_div));
+			printf("%u ",event->time);
 			switch(event->type)
 				{
 				case 0:
@@ -34,6 +34,12 @@ int main()
 						case 0x90:
 							printf("Note on,");
 							break;
+						case 0xb0:
+							printf("Control change,");
+							break;
+						case 0xc0:
+							printf("Program change,");
+							break;
 						default:
 							printf("Other %x,",event->data.bytes[0]);
 						}
@@ -41,6 +47,9 @@ int main()
 					break;
 				case 0x2:
 					printf("Copyright message: %s\n",event->data.bytes);
+					break;
+				case 0x3:
+					printf("Name: %s\n",event->data.bytes);
 					break;
 				case 0x7:
 					printf("Cue message: %s\n",event->data.bytes);

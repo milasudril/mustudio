@@ -21,7 +21,11 @@ namespace MuStudio
 		class Sequence
 			{
 			public:
-				Sequence(Herbs::StreamIn& source);
+				Sequence();
+				explicit Sequence(Herbs::StreamIn& source)
+					{load(source);}
+					
+				void load(Herbs::StreamIn& source);
 				
 				Herbs::Array<Event>* tracksBegin()
 					{return tracks.begin();}

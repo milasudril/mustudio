@@ -17,7 +17,7 @@ namespace MuStudio
 		class TrackReader
 			{
 			public:
-				TrackReader(ChunkReader& reader):m_reader(reader){}
+				explicit TrackReader(ChunkReader& reader):m_reader(reader){}
 				bool eventNextGet(Event& event);
 			private:
 				ChunkReader& m_reader;

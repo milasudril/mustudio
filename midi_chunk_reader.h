@@ -24,7 +24,7 @@ namespace MuStudio
 		class ChunkReader:public ChunkIO::Reader
 			{
 			public:
-				ChunkReader(Herbs::StreamIn& source,FileHeader& header);
+				explicit ChunkReader(Herbs::StreamIn& source,FileHeader& header);
 				~ChunkReader();
 				
 				bool headerRead(Herbs::Stringbase<char>& name);

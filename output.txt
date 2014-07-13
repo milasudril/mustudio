@@ -1,0 +1,46 @@
+File 'pattern_0.mid' loaded.
+format: 1 (several simultaneous tracks); number of tracks: 2; division: 480 PPQN.
+Track number 1 selected; it contains 6 events.
+List of events in track 1 follows:
+1: Metadata: Copyright: Copyright (c) xxxx Copyright Holder, 0.000000 seconds, 0 pulses, 0 delta pulses
+2: Metadata: Cue Point: Created by Rosegarden, 0.000000 seconds, 0 pulses, 0 delta pulses
+3: Metadata: Cue Point: http://www.rosegardenmusic.com/, 0.000000 seconds, 0 pulses, 0 delta pulses
+4: Metadata: Tempo: 500000 microseconds per quarter note, 120.00 BPM, 0.000000 seconds, 0 pulses, 0 delta pulses
+5: Metadata: Time Signature: 4/4, 24 clocks per click, 8 notated 32nd notes per quarter note, 0.000000 seconds, 0 pulses, 0 delta pulses
+6: Metadata: End Of Track, 204.000000 seconds, 195840 pulses, 195840 delta pulses
+Track number 2 selected; it contains 33 events.
+List of events in track 2 follows:
+1: Metadata: Unknown event: 0xff 0x3 0x0, 0.000000 seconds, 0 pulses, 0 delta pulses
+2: Event: Controller, channel 1, controller 0, value 0, 0.000000 seconds, 0 pulses, 0 delta pulses
+3: Event: Controller, channel 1, controller 32, value 0, 0.000000 seconds, 0 pulses, 0 delta pulses
+4: Event: Program Change, channel 1, controller 0, 0.000000 seconds, 0 pulses, 0 delta pulses
+5: Event: Controller, channel 1, controller 10, value 64, 0.000000 seconds, 0 pulses, 0 delta pulses
+6: Event: Controller, channel 1, controller 93, value 0, 0.000000 seconds, 0 pulses, 0 delta pulses
+7: Event: Controller, channel 1, controller 7, value 100, 0.000000 seconds, 0 pulses, 0 delta pulses
+8: Event: Controller, channel 1, controller 91, value 0, 0.000000 seconds, 0 pulses, 0 delta pulses
+9: Event: Note On, channel 1, note A4, velocity 100, 0.000000 seconds, 0 pulses, 0 delta pulses
+10: Event: Note Off, channel 1, note A4, velocity 64, 0.062500 seconds, 60 pulses, 60 delta pulses
+11: Event: Note On, channel 1, note A4, velocity 100, 0.125000 seconds, 120 pulses, 60 delta pulses
+12: Event: Note Off, channel 1, note A4, velocity 64, 0.187500 seconds, 180 pulses, 60 delta pulses
+13: Event: Note On, channel 1, note A4, velocity 100, 0.250000 seconds, 240 pulses, 60 delta pulses
+14: Event: Note Off, channel 1, note A4, velocity 64, 0.437500 seconds, 420 pulses, 180 delta pulses
+15: Event: Note On, channel 1, note A4, velocity 100, 0.500000 seconds, 480 pulses, 60 delta pulses
+16: Event: Note Off, channel 1, note A4, velocity 64, 0.562500 seconds, 540 pulses, 60 delta pulses
+17: Event: Note On, channel 1, note A4, velocity 100, 0.625000 seconds, 600 pulses, 60 delta pulses
+18: Event: Note Off, channel 1, note A4, velocity 64, 0.687500 seconds, 660 pulses, 60 delta pulses
+19: Event: Note On, channel 1, note A4, velocity 100, 0.750000 seconds, 720 pulses, 60 delta pulses
+20: Event: Note Off, channel 1, note A4, velocity 64, 0.937500 seconds, 900 pulses, 180 delta pulses
+21: Event: Note On, channel 1, note A4, velocity 100, 1.000000 seconds, 960 pulses, 60 delta pulses
+22: Event: Note Off, channel 1, note A4, velocity 64, 1.062500 seconds, 1020 pulses, 60 delta pulses
+23: Event: Note On, channel 1, note A4, velocity 100, 1.125000 seconds, 1080 pulses, 60 delta pulses
+24: Event: Note Off, channel 1, note A4, velocity 64, 1.187500 seconds, 1140 pulses, 60 delta pulses
+25: Event: Note On, channel 1, note A4, velocity 100, 1.250000 seconds, 1200 pulses, 60 delta pulses
+26: Event: Note Off, channel 1, note A4, velocity 64, 1.437500 seconds, 1380 pulses, 180 delta pulses
+27: Event: Note On, channel 1, note A4, velocity 100, 1.500000 seconds, 1440 pulses, 60 delta pulses
+28: Event: Note Off, channel 1, note A4, velocity 64, 1.562500 seconds, 1500 pulses, 60 delta pulses
+29: Event: Note On, channel 1, note A4, velocity 100, 1.625000 seconds, 1560 pulses, 60 delta pulses
+30: Event: Note Off, channel 1, note A4, velocity 64, 1.687500 seconds, 1620 pulses, 60 delta pulses
+31: Event: Note On, channel 1, note A4, velocity 100, 1.750000 seconds, 1680 pulses, 60 delta pulses
+32: Event: Note Off, channel 1, note A4, velocity 64, 1.937500 seconds, 1860 pulses, 180 delta pulses
+33: Metadata: End Of Track, 204.000000 seconds, 195840 pulses, 193980 delta pulses
+Good bye.

@@ -61,22 +61,32 @@ bool MuStudio::MIDI::TrackReader::eventNextGet(Event& event)
 			break;
 		default:
 			event.type=0;
+
 			if(eventType&0x80)
 				{
 				event.data.bytes[0]=eventType;
 				if(m_reader.eoc())
 					{return 0;}
+				event.data.bytes[1]=m_reader.byteGet();
 				}
 			else
 				{
 				//Running mode
 				event.data.bytes[0]=status_prev;
+				event.data.bytes[1]=eventType;
 				}
 			
-			event.data.bytes[1]=m_reader.byteGet();
-			if(m_reader.eoc())
-				{return 0;}
-			event.data.bytes[2]=m_reader.byteGet();
+			if((event.data.bytes[0]&0xf0)!=0xc0
+				&& (event.data.bytes[0]&0xf0)!=0xd0)
+				{
+				event.data.bytes[2]=m_reader.byteGet();
+				if(m_reader.eoc())
+					{return 0;}
+				}
+			
+
+			printf("%x %x %x\n",event.data.bytes[0],event.data.bytes[1]
+				,event.data.bytes[2]);
 			status_prev=event.data.bytes[0];
 			break;
 		}
