@@ -32,6 +32,8 @@ bool MuStudio::MIDI::TrackReader::eventNextGet(Event& event)
 			if(m_reader.eoc())
 				{return 0;}
 			size_t length=m_reader.varfieldGet();
+			if(length==0)
+				{break;}
 			if(m_reader.eoc())
 				{return 0;}
 		

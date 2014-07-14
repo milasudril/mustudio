@@ -1,13 +1,6 @@
 File 'pattern_0.mid' loaded.
 format: 1 (several simultaneous tracks); number of tracks: 2; division: 480 PPQN.
 Track number 1 selected; it contains 6 events.
-List of events in track 1 follows:
-1: Metadata: Copyright: Copyright (c) xxxx Copyright Holder, 0.000000 seconds, 0 pulses, 0 delta pulses
-2: Metadata: Cue Point: Created by Rosegarden, 0.000000 seconds, 0 pulses, 0 delta pulses
-3: Metadata: Cue Point: http://www.rosegardenmusic.com/, 0.000000 seconds, 0 pulses, 0 delta pulses
-4: Metadata: Tempo: 500000 microseconds per quarter note, 120.00 BPM, 0.000000 seconds, 0 pulses, 0 delta pulses
-5: Metadata: Time Signature: 4/4, 24 clocks per click, 8 notated 32nd notes per quarter note, 0.000000 seconds, 0 pulses, 0 delta pulses
-6: Metadata: End Of Track, 204.000000 seconds, 195840 pulses, 195840 delta pulses
 Track number 2 selected; it contains 33 events.
 List of events in track 2 follows:
 1: Metadata: Unknown event: 0xff 0x3 0x0, 0.000000 seconds, 0 pulses, 0 delta pulses
@@ -42,5 +35,5 @@ List of events in track 2 follows:
 30: Event: Note Off, channel 1, note A4, velocity 64, 1.687500 seconds, 1620 pulses, 60 delta pulses
 31: Event: Note On, channel 1, note A4, velocity 100, 1.750000 seconds, 1680 pulses, 60 delta pulses
 32: Event: Note Off, channel 1, note A4, velocity 64, 1.937500 seconds, 1860 pulses, 180 delta pulses
-33: Metadata: End Of Track, 204.000000 seconds, 195840 pulses, 193980 delta pulses
+33: Metadata: End Of Track, 2.000000 seconds, 1920 pulses, 60 delta pulses
 Good bye.
