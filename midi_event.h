@@ -12,16 +12,16 @@ namespace MuStudio
 	{
 	namespace MIDI
 		{
-		struct alignas(16) Event
+		struct alignas(32) Event
 			{
-			uint32_t time;
-			uint32_t type;
+			uint64_t time; /*<This time is absolute*/
+			uint64_t type;
 			union
 				{
-				uint8_t  bytes[8];
-				uint16_t words[4];
-				uint32_t dwords[2];
-				uint64_t qwords[1];
+				uint8_t  bytes[16];
+				uint16_t words[8];
+				uint32_t dwords[4];
+				uint64_t qwords[2];
 				} data;
 			};
 		}

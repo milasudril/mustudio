@@ -39,11 +39,15 @@ namespace MuStudio
 				size_t timeDivisionGet() const
 					{return time_division;}
 				
+				size_t lengthGet() const
+					{return length;}
+				
 				Sequence& tracksMerge();
 				
 			private:
 				Herbs::Array<Herbs::Array<Event> > tracks;
 				size_t time_division;
+				size_t length;
 			};
 		}
 	}

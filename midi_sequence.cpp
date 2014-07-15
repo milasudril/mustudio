@@ -15,13 +15,15 @@ void MuStudio::MIDI::Sequence::load(Herbs::StreamIn& source)
 	{
 	MuStudio::MIDI::FileHeader header;
 	MuStudio::MIDI::ChunkReader chunk_reader(source,header);
-	MuStudio::MIDI::TrackReader track_reader(chunk_reader);
+	
 	time_division=header.time_division;
 	tracks.lengthValidSet(header.n_tracks);
 	tracks.clear();
+	length=0;
 	Herbs::Stringbase<char> chunk_name;
 	while(chunk_reader.headerRead(chunk_name))
 		{
+		MuStudio::MIDI::TrackReader track_reader(chunk_reader);
 		tracks.append(Herbs::Array<Event>());
 		auto ptr_begin=tracks.end() - 1;
 		MuStudio::MIDI::Event e;
@@ -29,6 +31,7 @@ void MuStudio::MIDI::Sequence::load(Herbs::StreamIn& source)
 			{
 			ptr_begin->append(e);
 			}
+		length=std::max(length,e.time);
 		chunk_reader.skip();	
 		}
 	}
@@ -47,38 +50,21 @@ MuStudio::MIDI::Sequence& MuStudio::MIDI::Sequence::tracksMerge()
 	Herbs::Array<Herbs::Array<Event> > tracks_new(1);
 	tracks_new.lengthValidSet(1);
 	auto track_new=tracks_new.begin();
+
+	auto track=tracksBegin();
+	while(track!=tracksEnd())
 		{
-		auto track=tracksBegin();
-		while(track!=tracksEnd())
+		auto event=track->begin();
+		while(event!=track->end())
 			{
-			uint32_t time_tot=0;
-			auto event=track->begin();
-			while(event!=track->end())
-				{
-				auto e_temp=*event;
-				e_temp.time+=time_tot;
-				track_new->append(e_temp);
-				time_tot+=event->time;
-				++event;
-				}
-			++track;
-			}
-		
-		std::sort(track_new->begin(),track_new->end(),time_compare);
-		}
-		
-		{
-		auto event=track_new->begin();
-		uint32_t time_prev=0;
-		while(event!=track_new->end())
-			{
-			auto time_current=event->time;
-			event->time-=time_prev;
-			time_prev=time_current;
+			track_new->append(*event);
 			++event;
 			}
+		++track;
 		}
 	
+	std::sort(track_new->begin(),track_new->end(),time_compare);
+
 	tracks=tracks_new;
 	
 	return *this;

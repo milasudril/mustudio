@@ -16,7 +16,8 @@ bool MuStudio::MIDI::TrackReader::eventNextGet(Event& event)
 	
 	memset(&event,0,sizeof(event));
 	
-	event.time=m_reader.varfieldGet();
+	time_running+=m_reader.varfieldGet();
+	event.time=time_running;
 	if(m_reader.eoc())
 		{return 0;}
 		
@@ -85,10 +86,7 @@ bool MuStudio::MIDI::TrackReader::eventNextGet(Event& event)
 				if(m_reader.eoc())
 					{return 0;}
 				}
-			
 
-			printf("%x %x %x\n",event.data.bytes[0],event.data.bytes[1]
-				,event.data.bytes[2]);
 			status_prev=event.data.bytes[0];
 			break;
 		}
