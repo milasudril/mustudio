@@ -46,8 +46,8 @@ namespace MuStudio
 				
 			private:
 				Herbs::Array<Herbs::Array<Event> > tracks;
-				size_t time_division;
-				size_t length;
+				uint64_t time_division;
+				uint64_t length;
 			};
 		}
 	}
