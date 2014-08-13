@@ -25,7 +25,7 @@ MuStudio::MIDI::InputExported::InputExported(Client& client,const char* name)
 	if(port==NULL)
 		{throw "Could not register port";}
 	}
-	
+
 MuStudio::MIDI::InputExported::~InputExported()
 	{
 	jack_port_unregister((jack_client_t*)m_client,(jack_port_t*)port);
@@ -41,10 +41,10 @@ bool MuStudio::MIDI::InputExported::eventFirstGet(Event& event,size_t n_frames)
 	jack_midi_event_t e;
 	jack_midi_event_get(&e,buffer,event_index);
 	event.time=e.time;
-	event.type=0;
 	event.data.bytes[0]=e.buffer[0];
 	event.data.bytes[1]=e.buffer[1];
 	event.data.bytes[2]=e.buffer[2];
+	event.data.bytes[3]=0;
 	return 1;
 	}
 
@@ -56,10 +56,10 @@ bool MuStudio::MIDI::InputExported::eventNextGet(Event& event)
 		{
 		jack_midi_event_get(&e,buffer,event_index);
 		event.time=e.time;
-		event.type=0;
 		event.data.bytes[0]=e.buffer[0];
 		event.data.bytes[1]=e.buffer[1];
 		event.data.bytes[2]=e.buffer[2];
+		event.data.bytes[3]=0;
 		return 1;
 		}
 	return 0;

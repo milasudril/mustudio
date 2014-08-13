@@ -11,19 +11,21 @@ target[name[midi_output_exported.h]type[include]]
 namespace MuStudio
 	{
 	class Client;
+
 	namespace MIDI
 		{
 		class Event;
+		
 		class OutputExported
 			{
 			public:
 				OutputExported(Client& client,const char* name);
 				~OutputExported();
-				
+
 				void messageWrite(const Event& event);
-				
+
 				void messageWritePrepare(size_t n_frames);
-				
+
 			private:
 				void* m_client;
 				void* port;
