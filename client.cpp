@@ -9,7 +9,7 @@ target[name[client.o] type[object] dependency[jack;external] platform[;GNU/Linux
 void MuStudio::Client::setErrorHandler(void(*error_handler)(const char *))
 	{jack_set_error_function(error_handler);}
 
-namespace	
+namespace
 	{
 	int process_internal(jack_nframes_t nframes,void* arg)
 		{
@@ -28,7 +28,7 @@ namespace
 		MuStudio::Client* client=(MuStudio::Client*)arg;
 		client->onServerShutdown();
 		}
-	}  
+	}
 
 MuStudio::Client::Client(const char* name_client)
 	{
@@ -57,9 +57,14 @@ void MuStudio::Client::deactivate()
 
 MuStudio::Client::~Client()
 	{jack_client_close((jack_client_t*)connection);}
-	
+
 int MuStudio::Client::onSampleRateChanged(size_t fs_new)
 	{return 0;}
-	
+
 int MuStudio::Client::onServerShutdown()
 	{return 0;}
+
+size_t MuStudio::Client::sampleRateGet()
+	{
+	return jack_get_sample_rate((jack_client_t*)connection);
+	}
