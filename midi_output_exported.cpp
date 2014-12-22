@@ -22,7 +22,7 @@ MuStudio::MIDI::OutputExported::OutputExported(Client& client,const char* name)
 		(jack_client_t*)client.connection,name
 		, JACK_DEFAULT_MIDI_TYPE,JackPortIsOutput,0
 		);
-	if(port==NULL)
+	if(port==nullptr)
 		{throw "Could not register port";}
 	}
 
@@ -39,9 +39,31 @@ void MuStudio::MIDI::OutputExported::messageWritePrepare(size_t n_frames)
 
 void MuStudio::MIDI::OutputExported::messageWrite(const Event& e)
 	{
-	jack_midi_data_t* outbuff = jack_midi_event_reserve( buffer, 0, 3);
-	outbuff[0]=e.data.bytes[0];
-	outbuff[1]=e.data.bytes[1];
-	outbuff[2]=e.data.bytes[2];
+	int length;
+	if(e.data.bytes[0] < 0xF0)
+		{length = (e.data.bytes[0] >= 0xC0 &&  e.data.bytes[0] <= 0xDF) ? 2 : 3;}
+	else
+	if(e.data.bytes[0] >= 0xF8)
+		{length = 1;}
+	else
+		{
+		switch (e.data.bytes[0])
+			{
+			case 0xF1:
+			case 0xF3:
+				length = 2;
+				break;
+			case 0xF2:
+				length = 3;
+				break;
+			case 0xF6:
+				length = 1;
+				break;
+			default:
+				return;
+			}
+		}
+	jack_midi_data_t* outbuff = jack_midi_event_reserve( buffer, 0, length);
+	while(length--)
+		{outbuff[length]=e.data.bytes[length];}
 	}
-
